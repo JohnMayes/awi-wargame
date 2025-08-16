@@ -9,16 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "abstract-astar": "^0.2.0",
+    "honeycomb-grid": "^4.1.5",
+    "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "react-konva": "^19.0.7",
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
