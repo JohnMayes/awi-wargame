@@ -1,9 +1,12 @@
 'use client';
 import { FunctionComponent, useEffect, useRef } from "react";
-import { Stage, Layer, RegularPolygon } from "react-konva";
+import { Stage, Layer } from "react-konva";
 import { useGameStore } from "@/store/gameStore";
 import { HexCoordinates } from "honeycomb-grid";
 import { TEST_MAP } from "@/constants/maps";
+import { RenderHex } from "./RenderHex";
+import { RenderUnit } from "./RenderUnit";
+import { Unit, infantryUnit } from "@/types/unit";
 
 interface GameCanvasProps {
   width: number;
@@ -13,12 +16,14 @@ interface GameCanvasProps {
 const GameCanvas: FunctionComponent<GameCanvasProps> = ({ width, height }) => {
   const grid = useGameStore(state => state.grid);
   const createGrid = useGameStore(state => state.createGrid);
+  const units = useGameStore(state => state.units);
+  const addUnit = useGameStore(state => state.addUnit);
   const stageRef = useRef<any>(null);
 
   useEffect(() => {
     createGrid(TEST_MAP);
+    addUnit(infantryUnit, {id: 'red-iu1', side: 'blue', position: {col: 0, row: 1}})
   }, []);
-
 
   const handleWheel = (e: any) => {
     e.evt.preventDefault();
@@ -68,19 +73,13 @@ const GameCanvas: FunctionComponent<GameCanvasProps> = ({ width, height }) => {
         {grid?.toArray().map((hex) => {
           const coordinates: HexCoordinates = { q: hex.q, r: hex.r };
           return (
-            <RegularPolygon
-              key={`${coordinates.q}-${coordinates.r}`}
-              sides={6}
-              width={hex.width}
-              height={hex.height}
-              x={hex.x}
-              y={hex.y}
-              radius={hex.dimensions.xRadius}
-              stroke="lightgray"
-              strokeWidth={1}
-              rotation={30}
-            />
+            <RenderHex key={`${coordinates.q}-${coordinates.r}`} hex={hex} />
           )
+        })}
+      </Layer>
+      <Layer>
+        {units.map(unit => {
+          return <RenderUnit key={unit.id} unit={unit} />
         })}
       </Layer>
     </Stage>

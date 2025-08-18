@@ -33,5 +33,5 @@ export const TEST_MAP: MapCell[] = [
   { col: 5, row: 0, terrain: TerrainType.OPEN },
   { col: 5, row: 1, terrain: TerrainType.OPEN },
   { col: 5, row: 2, terrain: TerrainType.OPEN },
-  { col: 5, row: 3, terrain: TerrainType.OPEN },
+  { col: 5, row: 3, terrain: TerrainType.OPEN, occupant: 'test2' },
 ];

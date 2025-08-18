@@ -1,5 +1,5 @@
 
-import { Direction } from "honeycomb-grid"
+import { Direction, OffsetCoordinates } from "honeycomb-grid"
 import { TerrainType } from "./hex"
 
 export enum UnitType {
@@ -10,15 +10,19 @@ export enum UnitType {
   LEADER = 'leader'
 };
 
+export type PlayerSide = 'blue' | 'red';
+
 export interface Unit {
-  id: string,
-  unitType: UnitType,
-  movement: number,
-  range: number,
-  strength: number,
+  id: string;
+  side: PlayerSide;
+  unitType: UnitType;
+  movement: number;
+  range: number;
+  strength: number;
   movementRestrictions: TerrainType[];
-  moraleBonus: boolean,
-  facing: Direction
+  moraleBonus: boolean;
+  position: OffsetCoordinates;
+  facing: Direction;
 };
 
 export const infantryUnit: Partial<Unit> = {
