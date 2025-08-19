@@ -23,6 +23,7 @@ export interface Unit {
   moraleBonus: boolean;
   position: OffsetCoordinates;
   facing: Direction;
+  hasActedThisTurn: boolean;
 };
 
 export const infantryUnit: Partial<Unit> = {

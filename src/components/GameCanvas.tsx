@@ -22,7 +22,7 @@ const GameCanvas: FunctionComponent<GameCanvasProps> = ({ width, height }) => {
 
   useEffect(() => {
     createGrid(TEST_MAP);
-    addUnit(infantryUnit, {id: 'red-iu1', side: 'blue', position: {col: 0, row: 1}})
+    // addUnit(infantryUnit, {id: 'red-iu1', side: 'blue', position: {col: 0, row: 1}})
   }, []);
 
   const handleWheel = (e: any) => {
@@ -61,13 +61,40 @@ const GameCanvas: FunctionComponent<GameCanvasProps> = ({ width, height }) => {
     stage.position(newPos);
   };
 
+  // const dragBoundFunc = (pos: any) => {
+  //   // Example: Constrain the stage to a specific rectangular area
+  //   const minX = -200; // Minimum x-coordinate
+  //   const maxX = 200;  // Maximum x-coordinate
+  //   const minY = -100; // Minimum y-coordinate
+  //   const maxY = 100;  // Maximum y-coordinate
+
+  //   let newX = pos.x;
+  //   let newY = pos.y;
+
+  //   if (newX < minX) {
+  //     newX = minX;
+  //   } else if (newX > maxX) {
+  //     newX = maxX;
+  //   }
+
+  //   if (newY < minY) {
+  //     newY = minY;
+  //   } else if (newY > maxY) {
+  //     newY = maxY;
+  //   }
+
+  //   return { x: newX, y: newY };
+  // };
+
   return (
     <Stage
       ref={stageRef}
       width={width}
       height={height}
       draggable
+      // dragBoundFunc={dragBoundFunc}
       onWheel={handleWheel}
+      className="bg-zinc-900 rounded-2xl"
     >
       <Layer>
         {grid?.toArray().map((hex) => {

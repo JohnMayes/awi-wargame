@@ -23,6 +23,7 @@ export const RenderUnit: FunctionComponent<RenderUnitProps> = ({ unit }) => {
         stroke={selectedUnit === unit.id ? 'gold' : 'transparent'}
         strokeWidth={2}
         onClick={() => selectUnit(unit.id)}
+        opacity={unit.hasActedThisTurn ? 0.2 : 1}
       />
     );
   } else return null;

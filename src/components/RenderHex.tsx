@@ -12,10 +12,12 @@ export const RenderHex: FunctionComponent<RenderHexProps> = ({ hex }) => {
   const selectedUnit = useGameStore(state => state.selectedUnit)
   const deselectUnit = useGameStore(state => state.deselectUnit);
   const moveUnit = useGameStore(state => state.moveUnit);
+  const phase = useGameStore(state => state.phase);
+  const selectedOrder = useGameStore(state => state.selectedOrder);
 
   // need an 'isMoving' flag
   const handleClick = () => {
-    if (selectedUnit) {
+    if (selectedUnit && phase === 'orders' && selectedOrder === 'move') {
       moveUnit({col: hex.col, row: hex.row})
     } else deselectUnit();
   }
