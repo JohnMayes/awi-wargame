@@ -8,6 +8,8 @@ interface RenderUnitProps {
   unit: Unit
 }
 
+// TODO - context menu for orders
+
 export const RenderUnit: FunctionComponent<RenderUnitProps> = ({ unit }) => {
   const cell = useGameStore(state => state.getCellAt(unit.position));
   const selectedUnit = useGameStore(state => state.selectedUnit);

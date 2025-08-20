@@ -22,7 +22,7 @@ const GameCanvas: FunctionComponent<GameCanvasProps> = ({ width, height }) => {
 
   useEffect(() => {
     createGrid(TEST_MAP);
-    // addUnit(infantryUnit, {id: 'red-iu1', side: 'blue', position: {col: 0, row: 1}})
+    addUnit(infantryUnit, {id: 'red-iu1', side: 'blue', position: {col: 0, row: 1}})
   }, []);
 
   const handleWheel = (e: any) => {
